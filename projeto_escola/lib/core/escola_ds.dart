@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+/// Design System do Projeto
+abstract final class EscolaDs {
+  static const azul = Color(0xFF2563EB);
+  static const azulEscuro = Color(0xFF1E3A8A);
+  static const fundo = Color(0xFFEEF2F7);
+  static const superficie = Color(0xFFFFFFFF);
+  static const campo = Color(0xFFFFFFFF);
+  static const texto = Color(0xFF333333);
+  static const secundario = Color(0xFF555555);
+  static const borda = Color(0xFFDDDDDD);
+  static const desabilitado = Color(0xFFD1D5DB);
+  static const textoDesabilitado = Color(0xFF6B7280);
+  static const verde = Color(0xFF16A34A);
+  static const vermelho = Color(0xFFDC2626);
+
+  static const S8 = 8.0;
+  static const S16 = 16.0;
+  static const S24 = 24.0;
+
+  static const raioCampo = 12.0;
+  static const raioBotao = 12.0;
+  static const raioCartao = 20.0;
+
+  static BoxDecoration get cartao => BoxDecoration( 
+    color:superficie
+    borderRadius:BorderRadius.circular(raioCartao),
+    boxShadow:const[ 
+      BoxShadow(
+        color: Color(0x14000000),
+        blurRadius:30,
+        offset: Offset (0,10),
+
+      ),
+    ],
+  );
+
+
+
+
+}
