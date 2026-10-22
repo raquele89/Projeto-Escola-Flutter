@@ -23,20 +23,15 @@ abstract final class EscolaDs {
   static const raioBotao = 12.0;
   static const raioCartao = 20.0;
 
-  static BoxDecoration get cartao => BoxDecoration( 
-    color:superficie
-    borderRadius:BorderRadius.circular(raioCartao),
-    boxShadow:const[ 
+  static BoxDecoration get cartao => BoxDecoration(
+    color: superficie,
+    borderRadius: BorderRadius.circular(raioCartao),
+    boxShadow: const [
       BoxShadow(
         color: Color(0x14000000),
-        blurRadius:30,
-        offset: Offset (0,10),
-
+        blurRadius: 30,
+        offset: Offset(0, 10),
       ),
     ],
   );
-
-
-
-
 }
