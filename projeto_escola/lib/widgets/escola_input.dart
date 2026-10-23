@@ -1,38 +1,69 @@
-import 'package:projeto_escola/models/aluno.dart';
 
-class AlunoController {
-  final List<Aluno> alunos = [
-    Aluno(2, 'Maria Clara', '222.222.222-22', '(11)97777-2222'),
-    Aluno(3, 'André Silva', '123.456.789-09', '123456789'),
-    Aluno(4, 'Tainá Couto', '123.456.098-09', '(12)345678654'),
-  ];
+import 'package:flutter/material.dart';
+import 'package:projeto_escola/core/escola_ds.dart';
 
-  List<Aluno> listar() {
-    return alunos;
+/// Campo de texto reutilizável com rótulo e estados padronizados.
+class EscolaInput extends StatelessWidget {
+  const EscolaInput({
+    super.key,
+    required this.rotulo,
+    required this.controller,
+    this.ocultarTexto = false,
+    this.habilitado = true,
+    this.teclado = TextInputType.text,
+    this.aoMudar,
+  });
+
+  final String rotulo;
+  final TextEditingController controller;
+  final bool ocultarTexto;
+  final bool habilitado;
+  final TextInputType teclado;
+  final ValueChanged<String>? aoMudar;
+
+  /// Método auxiliar para criar todas as bordas com o mesmo formato.
+  OutlineInputBorder _borda(Color cor) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(EscolaDS.raioCampo),
+      borderSide: BorderSide(color: cor),
+    );
   }
 
-  bool cadastrar(String nome, String cpf, String telefone) {
-    for (final aluno in alunos) {
-      if (aluno.cpf == cpf) {
-        return false;
-      }
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          rotulo,
+          style: EscolaDS.rotulo,
+        ),
+        const SizedBox(height: 5),
+        TextField(
+          // O controller permite ler e alterar o conteúdo do campo.
+          controller: controller,
 
-    int id = 1;
-    if (alunos.isNotEmpty) {
-      id = alunos.last.id + 1;
-    }
+          // Usado em senhas para ocultar os caracteres por pontos.
+          obscureText: ocultarTexto,
+          enabled: habilitado,
+          keyboardType: teclado,
+          onChanged: aoMudar,
+          style: EscolaDS.corpo,
+          cursorColor: EscolaDS.azul,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor:
+                habilitado ? EscolaDS.campo : EscolaDS.fundo,
+            isDense: true,
+            contentPadding: const EdgeInsets.all(12),
+            enabledBorder: _borda(EscolaDS.borda),
+            disabledBorder: _borda(EscolaDS.borda),
 
-    alunos.add(Aluno(id, nome, cpf, telefone));
-    return true;
-  }
-
-  void editar(Aluno aluno, String nome, String telefone) {
-    aluno.nome = nome;
-    aluno.telefone = telefone;
-  }
-
-  void excluir(Aluno aluno) {
-    alunos.remove(aluno);
+            // A borda azul indica visualmente que o campo está com foco.
+            focusedBorder: _borda(EscolaDS.azul),
+          ),
+        ),
+      ],
+    );
   }
 }

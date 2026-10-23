@@ -11,7 +11,16 @@ import '../widgets/escola_tabela.dart';
 import 'tela_form_aluno.dart';
 
 class TelaAlunos extends StatefulWidget {
-  const TelaAlunos({super.key});
+  const TelaAlunos({
+    super.key,
+    required this.controller,
+    required this.aoSalvar,
+    this.aluno,
+  });
+
+  final AlunoController controller;
+  final VoidCallback aoSalvar;
+  final Aluno? aluno;
 
   @override
   State<TelaAlunos> createState() => _TelaAlunosState();

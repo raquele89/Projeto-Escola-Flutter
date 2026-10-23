@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// Design System do Projeto
 abstract final class EscolaDs {
@@ -33,5 +34,28 @@ abstract final class EscolaDs {
         offset: Offset(0, 10),
       ),
     ],
+  );
+
+  static TextStyle get corpo =>
+      GoogleFonts.inter(fontSize: 16, height: 1.5, color: secundario);
+
+  static TextStyle get rotulo => GoogleFonts.inter(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w400,
+    color: texto,
+  );
+
+  static TextStyle get botao => GoogleFonts.inter(
+    fontSize: 14,
+    height: 20 / 14,
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle get titulo => GoogleFonts.inter(
+    fontSize: 26,
+    height: 34 / 26,
+    fontWeight: FontWeight.w700,
+    color: azulEscuro,
   );
 }
